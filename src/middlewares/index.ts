@@ -1,4 +1,5 @@
 import { validateBody } from "./validateBody.middleware"
 import { idExists } from "./idExists.middleware"
+import { handleError } from "./handleError.middleware"
 
-export { validateBody, idExists }
+export default { validateBody, idExists, handleError }
