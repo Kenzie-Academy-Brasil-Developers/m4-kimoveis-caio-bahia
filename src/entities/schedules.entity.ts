@@ -3,9 +3,11 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm"
+import { User } from "./user.entity"
 
 @Entity("schedules")
 export class schedule {
@@ -15,4 +17,6 @@ export class schedule {
   date: string
   @Column({ type: "time" })
   hour: string
+  @ManyToOne(() => User, (u) => u.schedule)
+  userId: User
 }
