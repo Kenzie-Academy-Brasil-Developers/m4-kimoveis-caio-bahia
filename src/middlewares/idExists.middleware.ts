@@ -10,6 +10,7 @@ export const idExists = async (req: Request, res: Response, next: NextFunction):
   if (!foundEntity) throw new Error("User not Found")
 
   res.locals = { ...res.locals, foundEntity }
+
   return next()
 }
 

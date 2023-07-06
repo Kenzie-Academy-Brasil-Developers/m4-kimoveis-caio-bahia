@@ -11,4 +11,4 @@ userRouter.get("", userControllers.read)
 userRouter.use("/:id", middlewares.idExists)
 
 userRouter.patch("/:id")
-userRouter.post("/:id", userControllers.destroy)
+userRouter.delete("/:id", userControllers.destroy)

@@ -10,7 +10,7 @@ const create = async (payload: UserCreate): Promise<User> => {
   return user
 }
 const read = async (): Promise<Array<User>> => {
-  return await userRepository.find()
+  return await userRepository.find({ withDeleted: true })
 }
 
 // const update = async (): Promise => {
