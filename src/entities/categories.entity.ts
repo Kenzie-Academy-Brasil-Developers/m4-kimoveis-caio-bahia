@@ -1,18 +1,10 @@
-import {
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from "typeorm"
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity("categories")
 export class Category {
   @PrimaryGeneratedColumn("increment")
   id: number
-  @Column({ type: "date" })
-  date: string
-  @Column({ type: "time" })
-  hour: string
+  @Column({ unique: true })
+  name: string
+  // oneToMany RealStates
 }

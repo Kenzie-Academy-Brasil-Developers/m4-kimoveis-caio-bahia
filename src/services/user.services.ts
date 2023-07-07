@@ -1,16 +1,15 @@
-import { Repository } from "typeorm"
-import { UserCreate } from "../interfaces"
+import { UserCreate, UserRead, UserReturn } from "../interfaces"
 import { User } from "../entities"
-import { AppDataSource } from "../data-source"
 import { userRepository } from "../repositories"
+import { userReadSchema, userReturnSchema } from "../schemas"
 
-const create = async (payload: UserCreate): Promise<User> => {
+const create = async (payload: UserCreate): Promise<UserReturn> => {
   const user: User = userRepository.create(payload)
   await userRepository.save(user)
-  return user
+  return userReturnSchema.parse(user)
 }
-const read = async (): Promise<Array<User>> => {
-  return await userRepository.find({ withDeleted: true })
+const read = async (): Promise<UserRead> => {
+  return userReadSchema.parse(await userRepository.find({ withDeleted: true }))
 }
 
 // const update = async (): Promise => {
