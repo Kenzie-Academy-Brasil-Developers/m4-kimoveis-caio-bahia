@@ -5,9 +5,10 @@ import {
   userReadSchema,
   userReturnSchema
 } from "./user.schema"
-
 import { scheduleSchema, scheduleRequestSchema } from "./schedule.schema"
-import { categorySchema, categoryCreateSchema } from "./category.schema"
+import { categorySchema, categoryCreateSchema, categoryRealState } from "./category.schema"
+import { addressSchema, addressSchemaRequest } from "./address.schema"
+
 export {
   userSchema,
   userCreateSchema,
@@ -17,5 +18,8 @@ export {
   scheduleSchema,
   scheduleRequestSchema,
   categorySchema,
-  categoryCreateSchema
+  categoryCreateSchema,
+  categoryRealState,
+  addressSchema,
+  addressSchemaRequest
 }

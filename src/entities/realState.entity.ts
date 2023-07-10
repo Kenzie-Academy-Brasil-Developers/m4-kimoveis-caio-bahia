@@ -12,10 +12,10 @@ import {
 } from "typeorm"
 import { Category } from "./categories.entity"
 import { Address } from "./addresses.entity"
-import { schedule } from "./schedules.entity"
+import { Schedule } from "./schedules.entity"
 
 @Entity("real_estate")
-export class realEstate {
+export class RealEstate {
   @PrimaryGeneratedColumn("increment")
   id: number
   @Column({ type: "boolean", default: false })
@@ -32,10 +32,10 @@ export class realEstate {
   @ManyToOne(() => Category, (c) => c.realEstate)
   category: Category
 
-  @OneToOne(() => Address, (a) => a.realEstate)
+  @OneToOne(() => Address, (a) => a.RealEstate)
   @JoinColumn()
   address: Address
 
-  @OneToMany(() => schedule, (s) => s.realEstate)
-  schedules: Array<schedule>
+  @OneToMany(() => Schedule, (s) => s.realEstate)
+  schedules: Array<Schedule>
 }

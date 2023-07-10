@@ -1,5 +1,7 @@
 import { User } from "./user.entity"
-import { schedule } from "./schedules.entity"
+import { Schedule } from "./schedules.entity"
 import { Category } from "./categories.entity"
+import { RealEstate } from "./realState.entity"
+import { Address } from "./addresses.entity"
 
-export { User, schedule, Category }
+export { User, Schedule, Category, RealEstate, Address }

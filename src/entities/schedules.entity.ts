@@ -1,9 +1,9 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 import { User } from "./user.entity"
-import { realEstate } from "./realState.entity"
+import { RealEstate } from "./realState.entity"
 
 @Entity("schedules")
-export class schedule {
+export class Schedule {
   @PrimaryGeneratedColumn("increment")
   id: number
   @Column({ type: "date" })
@@ -12,6 +12,6 @@ export class schedule {
   hour: string
   @ManyToOne(() => User, (u) => u.schedule)
   user: User
-  @ManyToOne(() => realEstate)
-  realEstate: realEstate
+  @ManyToOne(() => RealEstate)
+  realEstate: RealEstate
 }

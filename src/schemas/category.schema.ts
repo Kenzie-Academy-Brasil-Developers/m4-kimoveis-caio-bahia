@@ -6,5 +6,6 @@ const categorySchema = z.object({
 })
 
 const categoryCreateSchema = categorySchema.omit({ id: true })
+const categoryRealState = categorySchema.omit({ name: true })
 
-export { categorySchema, categoryCreateSchema }
+export { categorySchema, categoryCreateSchema, categoryRealState }

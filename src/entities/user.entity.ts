@@ -9,7 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm"
-import { schedule } from "./schedules.entity"
+import { Schedule } from "./schedules.entity"
 import { getRounds, hashSync } from "bcryptjs"
 
 @Entity("users")
@@ -30,8 +30,8 @@ export class User {
   updatedAt: string
   @DeleteDateColumn({ type: "date" })
   deletedAt: string | null
-  @OneToMany(() => schedule, (s) => s.user)
-  schedule: Array<schedule>
+  @OneToMany(() => Schedule, (s) => s.user)
+  schedule: Array<Schedule>
 
   @BeforeInsert()
   @BeforeUpdate()
