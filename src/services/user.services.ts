@@ -12,9 +12,20 @@ const read = async (): Promise<UserRead> => {
   return userReadSchema.parse(await userRepository.find({ withDeleted: true }))
 }
 
-// const update = async (): Promise => {
-//   return
-// }
+const update = async (user: User, userId: number): Promise<UserReturn> => {
+  const oldUserData: User | null = await userRepository.findOneBy({
+    id: userId
+  })
+  const newUserData: User = userRepository.create({
+    ...oldUserData,
+    ...user
+  })
+  await userRepository.save(newUserData)
+
+  const updateUserReturn: UserReturn = userReturnSchema.parse(newUserData)
+
+  return updateUserReturn
+}
 
 const destroy = async (user: User): Promise<void> => {
   await userRepository.softRemove(user)
