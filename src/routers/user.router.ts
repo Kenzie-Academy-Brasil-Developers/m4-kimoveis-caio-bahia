@@ -5,7 +5,12 @@ import { userControllers } from "../controllers"
 
 export const userRouter: Router = Router()
 
-userRouter.post("", middlewares.validateBody(userCreateSchema), userControllers.create)
+userRouter.post(
+  "",
+  middlewares.validateBody(userCreateSchema),
+  middlewares.uniqueEmail,
+  userControllers.create
+)
 userRouter.get("", middlewares.verifyToken, middlewares.isAdmin, userControllers.read)
 
 userRouter.use("/:id", middlewares.verifyToken, middlewares.isAdminOrOwner, middlewares.idExists)

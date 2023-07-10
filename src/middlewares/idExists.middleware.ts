@@ -8,7 +8,7 @@ export const idExists = async (req: Request, res: Response, next: NextFunction):
 
   const foundEntity: User | null = await userRepository.findOneBy({ id })
 
-  if (!foundEntity) throw new AppError("User not found", 404)
+  if (!foundEntity) throw new AppError("User not found", 403)
 
   res.locals = { ...res.locals, foundEntity }
 

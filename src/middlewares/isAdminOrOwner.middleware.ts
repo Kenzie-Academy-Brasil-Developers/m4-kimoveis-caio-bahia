@@ -7,7 +7,7 @@ export const isAdminOrOwner = (req: Request, res: Response, next: NextFunction):
 
   if (admin) return next()
   if (Number(sub) !== Number(id)) {
-    throw new AppError("Insufficient permissions", 403)
+    throw new AppError("Insufficient permission", 403)
   }
 
   return next()

@@ -5,6 +5,7 @@ import { isAdmin } from "./isAdmin.middleware"
 import { verifyToken } from "./verifyToken.middleware"
 import { isAdminOrOwner } from "./isAdminOrOwner.middleware"
 import { uniqueCategory } from "./uniqueCategory.middleware"
+import { uniqueEmail } from "./uniqueEmail.middleware"
 
 export default {
   validateBody,
@@ -13,5 +14,6 @@ export default {
   isAdmin,
   verifyToken,
   isAdminOrOwner,
-  uniqueCategory
+  uniqueCategory,
+  uniqueEmail
 }
