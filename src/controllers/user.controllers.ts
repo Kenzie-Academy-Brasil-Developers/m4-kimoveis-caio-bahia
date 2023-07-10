@@ -8,7 +8,8 @@ const create = async (req: Request, res: Response): Promise<Response> => {
   return res.status(201).json(user)
 }
 const read = async (req: Request, res: Response): Promise<Response> => {
-  const users: UserRead = await userServices.read()
+  const admin: boolean = res.locals.decoded.admin
+  const users: UserRead | undefined = await userServices.read(admin)
   return res.status(200).json(users)
 }
 

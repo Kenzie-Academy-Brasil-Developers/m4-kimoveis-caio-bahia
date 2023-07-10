@@ -3,6 +3,7 @@ import { AppError } from "../errors"
 
 export const isAdmin = (req: Request, res: Response, next: NextFunction): void => {
   const admin: boolean = res.locals.decoded.admin
+
   if (!admin) throw new AppError("Insufficient permissions", 403)
 
   return next()

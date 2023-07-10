@@ -8,8 +8,11 @@ const create = async (payload: UserCreate): Promise<UserReturn> => {
   await userRepository.save(user)
   return userReturnSchema.parse(user)
 }
-const read = async (): Promise<UserRead> => {
-  return userReadSchema.parse(await userRepository.find({ withDeleted: true }))
+const read = async (admin: boolean): Promise<UserRead | undefined> => {
+  if (admin) {
+    const user: Array<User> = await userRepository.find({ withDeleted: true })
+    return userReadSchema.parse(user)
+  }
 }
 
 const update = async (user: User, userId: number): Promise<UserReturn> => {
@@ -31,4 +34,4 @@ const destroy = async (user: User): Promise<void> => {
   await userRepository.softRemove(user)
 }
 
-export default { create, read, destroy }
+export default { create, read, destroy, update }

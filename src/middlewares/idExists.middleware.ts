@@ -11,6 +11,7 @@ export const idExists = async (req: Request, res: Response, next: NextFunction):
 
   res.locals = { ...res.locals, foundEntity }
 
+  console.log(res.locals)
   return next()
 }
 

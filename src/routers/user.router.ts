@@ -6,9 +6,9 @@ import { userControllers } from "../controllers"
 export const userRouter: Router = Router()
 
 userRouter.post("", middlewares.validateBody(userCreateSchema), userControllers.create)
-userRouter.get("", userControllers.read)
+userRouter.get("", middlewares.verifyToken, middlewares.isAdmin, userControllers.read)
 
-userRouter.use("/:id", middlewares.idExists)
+userRouter.use("/:id", middlewares.verifyToken, middlewares.idExists, middlewares.isAdmin)
 
 userRouter.patch("/:id")
-userRouter.delete("/:id", userControllers.destroy)
+userRouter.delete("/:id", middlewares.isAdminOrOwner, userControllers.destroy)
