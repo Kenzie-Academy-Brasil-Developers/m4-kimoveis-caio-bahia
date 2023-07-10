@@ -13,13 +13,17 @@ const read = async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).json(users)
 }
 
-// const update = async (): Promise => {
-//   return
-// }
+const update = async (req: Request, res: Response): Promise<Response> => {
+  const userData = req.body
+  const userId: number = Number(req.params.id)
+
+  const UpdatedUser = await userServices.update(userData, userId)
+  return res.status(200).json(UpdatedUser)
+}
 
 const destroy = async (req: Request, res: Response): Promise<Response> => {
   await userServices.destroy(res.locals.foundEntity)
   return res.status(204).json()
 }
 
-export default { create, read, destroy }
+export default { create, read, destroy, update }

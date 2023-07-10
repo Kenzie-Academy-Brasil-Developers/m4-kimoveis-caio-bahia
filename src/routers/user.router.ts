@@ -8,7 +8,7 @@ export const userRouter: Router = Router()
 userRouter.post("", middlewares.validateBody(userCreateSchema), userControllers.create)
 userRouter.get("", middlewares.verifyToken, middlewares.isAdmin, userControllers.read)
 
-userRouter.use("/:id", middlewares.verifyToken, middlewares.idExists, middlewares.isAdmin)
+userRouter.use("/:id", middlewares.verifyToken, middlewares.isAdminOrOwner, middlewares.idExists)
 
-userRouter.patch("/:id")
-userRouter.delete("/:id", middlewares.isAdminOrOwner, userControllers.destroy)
+userRouter.patch("/:id", userControllers.update)
+userRouter.delete("/:id", middlewares.isAdmin, userControllers.destroy)

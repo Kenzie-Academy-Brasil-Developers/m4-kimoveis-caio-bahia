@@ -30,7 +30,7 @@ export class User {
   updatedAt: string
   @DeleteDateColumn({ type: "date" })
   deletedAt: string | null
-  @OneToMany(() => schedule, (r) => r.userId)
+  @OneToMany(() => schedule, (s) => s.user)
   schedule: Array<schedule>
 
   @BeforeInsert()

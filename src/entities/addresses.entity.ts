@@ -3,9 +3,11 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm"
+import { realEstate } from "./realState.entity"
 
 @Entity("addresses")
 export class Address {
@@ -21,4 +23,6 @@ export class Address {
   city: string
   @Column({ length: 2 })
   state: string
+  @OneToOne(() => realEstate, (r) => r.address)
+  realEstate: realEstate
 }
