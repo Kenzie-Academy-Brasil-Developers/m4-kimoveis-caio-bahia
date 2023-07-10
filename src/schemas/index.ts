@@ -7,7 +7,7 @@ import {
 } from "./user.schema"
 
 import { scheduleSchema, scheduleRequestSchema } from "./schedule.schema"
-
+import { categorySchema, categoryCreateSchema } from "./category.schema"
 export {
   userSchema,
   userCreateSchema,
@@ -15,5 +15,7 @@ export {
   userReadSchema,
   userReturnSchema,
   scheduleSchema,
-  scheduleRequestSchema
+  scheduleRequestSchema,
+  categorySchema,
+  categoryCreateSchema
 }
