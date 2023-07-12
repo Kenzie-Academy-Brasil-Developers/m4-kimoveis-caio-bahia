@@ -15,3 +15,4 @@ categoryRouter.post(
   categoryControllers.create
 )
 categoryRouter.get("", categoryControllers.read)
+categoryRouter.get("/:id/realEstate", categoryControllers.retrieve)

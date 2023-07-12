@@ -4,7 +4,8 @@ import {
   CategoryCreate,
   CategoryRepo,
   CategoryResponse,
-  CategoryRequest
+  CategoryRequest,
+  CategoryReturn
 } from "./category.interface"
 import {
   realEstateCreate,
@@ -27,5 +28,6 @@ export {
   realEstateCreate,
   realEstateRepo,
   realEstateRead,
-  realEstateReturn
+  realEstateReturn,
+  CategoryReturn
 }

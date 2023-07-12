@@ -2,7 +2,8 @@
 // GetAll Imoveis Inside Category /categories/:id/realEstate
 
 import { Category } from "../entities"
-import { CategoryCreate, CategoryResponse } from "../interfaces"
+import { AppError } from "../errors"
+import { CategoryCreate, CategoryResponse, CategoryReturn } from "../interfaces"
 import { categoryRepository } from "../repositories"
 
 const create = async (payload: CategoryCreate): Promise<Category> => {
@@ -17,4 +18,15 @@ const read = async (): Promise<Array<CategoryResponse>> => {
 
   return repoResponse
 }
-export default { create, read }
+
+const Retrieve = async (categoryId: string): Promise<CategoryReturn> => {
+  const RealEstatesbyCategory: Category | null = await categoryRepository.findOne({
+    where: { id: Number(categoryId) },
+    relations: { realEstate: true }
+  })
+  if (!RealEstatesbyCategory) throw new AppError("Category not found", 404)
+
+  return RealEstatesbyCategory
+}
+
+export default { create, read, Retrieve }
