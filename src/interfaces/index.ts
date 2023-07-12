@@ -6,7 +6,12 @@ import {
   CategoryResponse,
   CategoryRequest
 } from "./category.interface"
-
+import {
+  realEstateCreate,
+  realEstateRepo,
+  realEstateRead,
+  realEstateReturn
+} from "./realEstate.interface"
 export {
   UserCreate,
   UserRead,
@@ -18,5 +23,9 @@ export {
   CategoryCreate,
   CategoryRepo,
   CategoryResponse,
-  CategoryRequest
+  CategoryRequest,
+  realEstateCreate,
+  realEstateRepo,
+  realEstateRead,
+  realEstateReturn
 }

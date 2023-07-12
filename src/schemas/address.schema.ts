@@ -9,6 +9,6 @@ const addressSchema = z.object({
   state: z.string().max(2)
 })
 
-const addressSchemaRequest = addressSchema.omit({ id: true })
+const addressSchemaCreate = addressSchema.omit({ id: true })
 
-export { addressSchema, addressSchemaRequest }
+export { addressSchema, addressSchemaCreate }
