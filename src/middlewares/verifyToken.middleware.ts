@@ -9,10 +9,10 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction): vo
 
   const [_bearer, token]: Array<string> = authorization.split(" ")
 
-  res.locals = {
-    ...res.locals,
-    decoded: verify(token, process.env.SECRET_KEY!)
-  }
+  verify(token, process.env.SECRET_KEY!, (error, decoded) => {
+    if (error) throw new AppError(error.message, 401)
+    res.locals = { ...res.locals, decoded }
+  })
 
   return next()
 }
