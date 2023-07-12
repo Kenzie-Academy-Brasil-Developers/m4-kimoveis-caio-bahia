@@ -3,7 +3,7 @@
 
 import { RealEstate, Schedule, User } from "../entities"
 import { AppError } from "../errors"
-import { scheduleCreate } from "../interfaces"
+import { realEstateReturn, scheduleCreate } from "../interfaces"
 import { realEstateRepository, shceduleRepository, userRepository } from "../repositories"
 
 const create = async (payload: scheduleCreate, userId: number) => {
@@ -61,4 +61,17 @@ const create = async (payload: scheduleCreate, userId: number) => {
   return { message: "Schedule created" }
 }
 
-export default { create }
+const read = async (id: string): Promise<realEstateReturn> => {
+  const SeachSchedulesByEstate: RealEstate | null = await realEstateRepository.findOne({
+    where: { id: Number(id) },
+    relations: {
+      category: true,
+      address: true,
+      schedules: { user: true }
+    }
+  })
+  if (!SeachSchedulesByEstate) throw new AppError("RealEstate not found", 404)
+  return SeachSchedulesByEstate
+}
+
+export default { create, read }

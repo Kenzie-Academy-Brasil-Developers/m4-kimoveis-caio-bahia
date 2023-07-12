@@ -14,10 +14,8 @@ const read = async (req: Request, res: Response): Promise<Response> => {
 }
 
 const update = async (req: Request, res: Response): Promise<Response> => {
-  const userData = req.body
   const userId: number = Number(req.params.id)
-
-  const UpdatedUser = await userServices.update(userData, userId)
+  const UpdatedUser = await userServices.update(req.body, userId)
   return res.status(200).json(UpdatedUser)
 }
 

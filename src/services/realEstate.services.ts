@@ -29,18 +29,18 @@ const create = async (payload: realEstateCreate): Promise<RealEstate> => {
   const CreateAddress: addressCreate = addressRepository.create(payload.address)
   await addressRepository.save(CreateAddress)
 
-  const checkCategoty: Category | null = await categoryRepository.findOneBy({
+  const checkCategory: Category | null = await categoryRepository.findOneBy({
     id: Number(payload.categoryId)
   })
 
-  if (!checkCategoty) {
+  if (!checkCategory) {
     throw new AppError("Category not found", 404)
   }
 
   const realEstateCreate: RealEstate = realEstateRepository.create({
     ...payload,
     address: CreateAddress,
-    category: checkCategoty
+    category: checkCategory
   })
 
   await realEstateRepository.save(realEstateCreate)
@@ -48,7 +48,7 @@ const create = async (payload: realEstateCreate): Promise<RealEstate> => {
 }
 const read = async (): Promise<Array<RealEstate>> => {
   const GetAll: Array<RealEstate> = await realEstateRepository.find({
-    relations: { address: true, category: true }
+    relations: { address: true }
   })
 
   return GetAll

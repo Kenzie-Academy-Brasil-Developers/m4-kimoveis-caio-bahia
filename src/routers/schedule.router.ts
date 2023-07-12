@@ -12,3 +12,10 @@ scheduleRouter.post(
   middlewares.validateBody(scheduleRequestSchema),
   scheduleControllers.create
 )
+
+scheduleRouter.get(
+  "/realEstate/:id",
+  middlewares.verifyToken,
+  middlewares.isAdmin,
+  scheduleControllers.read
+)

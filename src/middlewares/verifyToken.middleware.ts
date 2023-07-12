@@ -12,6 +12,7 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction): vo
   verify(token, process.env.SECRET_KEY!, (error, decoded) => {
     if (error) throw new AppError(error.message, 401)
     res.locals = { ...res.locals, decoded }
+    console.log(decoded)
   })
 
   return next()

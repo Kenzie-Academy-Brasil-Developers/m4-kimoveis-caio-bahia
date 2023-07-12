@@ -11,7 +11,7 @@ export const uniqueEmail = async (
   const email: string = req.body.email
   if (!email) return next()
 
-  const foundEntity: User | null = await userRepository.findOneBy({ email })
+  const foundEntity: User | null = await userRepository.findOneBy({ email: email })
   if (foundEntity) throw new AppError("Email already exists", 409)
 
   return next()

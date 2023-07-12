@@ -10,6 +10,7 @@ realEstateRouter.post(
   middlewares.validateBody(realEstateCreateSchema),
   middlewares.verifyToken,
   middlewares.isAdmin,
+  middlewares.CheckAdress,
   realEstateControllers.create
 )
 

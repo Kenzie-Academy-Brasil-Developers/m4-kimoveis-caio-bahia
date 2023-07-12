@@ -1,6 +1,6 @@
 import { Router } from "express"
 import middlewares from "../middlewares"
-import { userCreateSchema } from "../schemas"
+import { UserUpdateSchema, userCreateSchema } from "../schemas"
 import { userControllers } from "../controllers"
 
 export const userRouter: Router = Router()
@@ -13,13 +13,20 @@ userRouter.post(
 )
 userRouter.get("", middlewares.verifyToken, middlewares.isAdmin, userControllers.read)
 
-userRouter.use("/:id", middlewares.verifyToken, middlewares.isAdminOrOwner, middlewares.idExists)
+userRouter.use("/:id", middlewares.verifyToken, middlewares.isOwner, middlewares.idExists)
 
-userRouter.patch("/:id", userControllers.update)
+userRouter.patch(
+  "/:id",
+  middlewares.validateBody(UserUpdateSchema),
+  middlewares.verifyToken,
+  middlewares.isOwner,
+  userControllers.update
+)
 userRouter.delete(
   "/:id",
+  middlewares.verifyToken,
   middlewares.isAdmin,
   middlewares.idExists,
-  middlewares.verifyToken,
+  middlewares.isDeleted,
   userControllers.destroy
 )

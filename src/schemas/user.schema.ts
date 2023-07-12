@@ -9,7 +9,6 @@ const userSchema = z.object({
   createdAt: z.string().or(z.date()),
   updatedAt: z.string().or(z.date()),
   deletedAt: z.string().or(z.date()).nullable()
-  //   schedule: Array<schedule>
 })
 
 const userCreateSchema = userSchema.omit({
@@ -21,7 +20,7 @@ const userCreateSchema = userSchema.omit({
 
 const userReturnSchema = userSchema.omit({ password: true })
 
-const UserUpdateSchema = userCreateSchema.omit({ id: true, admin: true }).partial()
+const UserUpdateSchema = userCreateSchema.omit({ id: true, admin: true, password: true }).partial()
 
 const userReadSchema = userReturnSchema.array()
 
