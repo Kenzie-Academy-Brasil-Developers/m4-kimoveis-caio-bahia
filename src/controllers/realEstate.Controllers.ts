@@ -10,6 +10,6 @@ const create = async (req: Request, res: Response): Promise<Response> => {
 
 const read = async (req: Request, res: Response): Promise<Response> => {
   const GetAll: Array<RealEstate> = await realEstateServices.read()
-  return res.status(201).json(GetAll)
+  return res.status(200).json(GetAll)
 }
 export default { create, read }

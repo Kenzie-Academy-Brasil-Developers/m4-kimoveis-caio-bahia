@@ -5,7 +5,7 @@ import {
   userReadSchema,
   userReturnSchema
 } from "./user.schema"
-import { scheduleSchema, scheduleRequestSchema } from "./schedule.schema"
+import { scheduleSchema, scheduleRequestSchema, scheduleReturnSchema } from "./schedule.schema"
 import { categorySchema, categoryCreateSchema, categoryRealState } from "./category.schema"
 import { addressSchema, addressSchemaCreate } from "./address.schema"
 import {
@@ -30,5 +30,6 @@ export {
   realEstateCreateSchema,
   realEstateSchema,
   realEstateReturnSchema,
-  realEstateReadSchema
+  realEstateReadSchema,
+  scheduleReturnSchema
 }

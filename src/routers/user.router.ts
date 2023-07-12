@@ -16,4 +16,10 @@ userRouter.get("", middlewares.verifyToken, middlewares.isAdmin, userControllers
 userRouter.use("/:id", middlewares.verifyToken, middlewares.isAdminOrOwner, middlewares.idExists)
 
 userRouter.patch("/:id", userControllers.update)
-userRouter.delete("/:id", middlewares.isAdmin, userControllers.destroy)
+userRouter.delete(
+  "/:id",
+  middlewares.isAdmin,
+  middlewares.idExists,
+  middlewares.verifyToken,
+  userControllers.destroy
+)

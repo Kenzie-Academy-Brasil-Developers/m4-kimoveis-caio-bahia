@@ -13,6 +13,8 @@ import {
   realEstateRead,
   realEstateReturn
 } from "./realEstate.interface"
+import { scheduleCreate, scheduleRepo, scheduleReturn } from "./schedule.interface"
+
 export {
   UserCreate,
   UserRead,
@@ -29,5 +31,8 @@ export {
   realEstateRepo,
   realEstateRead,
   realEstateReturn,
-  CategoryReturn
+  CategoryReturn,
+  scheduleCreate,
+  scheduleRepo,
+  scheduleReturn
 }
