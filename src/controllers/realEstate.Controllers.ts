@@ -8,4 +8,8 @@ const create = async (req: Request, res: Response): Promise<Response> => {
   return res.status(201).json(realEstate)
 }
 
-export default { create }
+const read = async (req: Request, res: Response): Promise<Response> => {
+  const GetAll: Array<RealEstate> = await realEstateServices.read()
+  return res.status(201).json(GetAll)
+}
+export default { create, read }

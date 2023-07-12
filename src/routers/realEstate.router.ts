@@ -1,14 +1,16 @@
 import { Router } from "express"
 import middlewares from "../middlewares"
-import { realEstateSchema } from "../schemas"
+import { realEstateCreateSchema, realEstateSchema } from "../schemas"
 import { realEstateControllers } from "../controllers"
 
 export const realEstateRouter: Router = Router()
 
 realEstateRouter.post(
   "",
-  middlewares.validateBody(realEstateSchema),
+  middlewares.validateBody(realEstateCreateSchema),
   middlewares.verifyToken,
   middlewares.isAdmin,
   realEstateControllers.create
 )
+
+realEstateRouter.get("", realEstateControllers.read)

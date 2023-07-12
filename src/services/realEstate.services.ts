@@ -46,5 +46,11 @@ const create = async (payload: realEstateCreate): Promise<RealEstate> => {
   await realEstateRepository.save(realEstateCreate)
   return realEstateCreate
 }
+const read = async (): Promise<Array<RealEstate>> => {
+  const GetAll: Array<RealEstate> = await realEstateRepository.find({
+    relations: { address: true, category: true }
+  })
 
-export default { create }
+  return GetAll
+}
+export default { create, read }
